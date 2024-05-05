@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/communities.dart';
+import 'screens/feed.dart';
+import 'screens/home.dart';
 
 void main() {
     runApp(const MyApp());
@@ -23,38 +25,6 @@ class MyApp extends StatelessWidget {
     }
 }
 
-class HomePage extends StatelessWidget {
-
-    const HomePage({super.key});
-
-    static const List<String> items = <String>[
-        'Music',
-        // Add more items here
-    ];
-
-    @override
-    Widget build(BuildContext context) {
-        return Scaffold(
-            body: Center(            
-                child: Column(
-                    children: [
-                        for (var item in items)
-                        ElevatedButton(
-                            onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => const CommunitiesPage()),
-                                );
-                            },
-                            child: Text(item),
-                        ),
-                    ],
-                ),
-            ),
-        );
-    }
-}
-
 
 class NavBar extends StatefulWidget {
     const NavBar({super.key});
@@ -66,8 +36,8 @@ class _NavBarState extends State<NavBar> {
     int _selectedIndex = 0;
     static const List<Widget> _widgetOptions = <Widget>[
         HomePage(),
-        Text('Create Page'),
-        Text('Feed Page'),
+        const Text('Create Page'),
+        FeedPage(),
     ];
 
     void _onItemTapped(int index) {
@@ -76,7 +46,7 @@ class _NavBarState extends State<NavBar> {
         });
     }
 
-   @override
+    @override
     Widget build(BuildContext context) {
         return Scaffold(
             appBar: AppBar(
